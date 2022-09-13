@@ -112,3 +112,15 @@ hr {
 p {
     margin-bottom: 5px;
 }
+
+.library-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 24px;
+}
+
+.book-box {
+    border: 1px solid red;
+    height: 180px;
+}
