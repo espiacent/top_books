@@ -24,10 +24,10 @@ class Application {
         const box = document.createElement('div');
         box.className = 'book-box';
         box.innerHTML = `
-                <p>${book.title}</p>
-                <p>${book.author}</p>
-                <p>${book.pages}</p>
-                <p>${book.read}</p>
+                <p class="title">${book.title}</p>
+                <p class="author">${book.author}</p>
+                <p class="pages">${book.pages}</p>
+                <p class="read">${book.read}</p>
                 <button class="delete-book">Delete</button>
                 `;
         library.appendChild(box);
@@ -98,12 +98,14 @@ addbtn.addEventListener('mouseup', function () {
     document.querySelector(".title").focus();
 });
 
+
 closebtn.addEventListener('mouseup', function () {
     popup.classList.toggle('open');
 });
 
 document.querySelector('.library-container').addEventListener('click', (e) => {
     Application.removeBook(e.target);
+    SaveData.removeBook(e.target.parentElement.querySelector('.title').textContent);
 });
 
 // form submit (add new book)
