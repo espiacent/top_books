@@ -14,22 +14,9 @@ class Book {
 }
 // APP CLASS
 class Application {
-    static addToLibrary() {
-        const BookList = [{
-            title: 'Thud!',
-            author: 'Pterry',
-            pages: '200',
-            read: 'not yet read'
-        },
-        {
-            title: 'Snuff!',
-            author: 'Pterry',
-            pages: '250',
-            read: 'already read'
-        }
-        ];
-        const books = BookList;
 
+    static addToLibrary() {
+        const books = SaveData.getBooklist();
         books.forEach((book) => Application.addBook(book));
     }
     static addBook(book) {
@@ -45,12 +32,55 @@ class Application {
                 `;
         library.appendChild(box);
     }
+    static removeBook(e) {
+        if (e.classList.contains('delete-book')) {
+            e.parentElement.remove();
+            Application.showValidationAlert('Item removed from list.', 'success');
+        }
+    }
+    static showValidationAlert(message, classname) {
+        const alertbox = document.createElement('div');
+        alertbox.className = `alertbox ${classname}`;
+        alertbox.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.alert-container');
+        const small = document.querySelector('small');
+        container.insertBefore(alertbox, small);
+        setTimeout(() => document.querySelector('.alertbox').remove(), 1800);
+    }
 };
+
+class SaveData {
+    static getBooklist() {
+        let Booklist;
+        if (localStorage.getItem('Booklist') === null) {
+            Booklist = [];
+        } else {
+            Booklist = JSON.parse(localStorage.getItem('Booklist'));
+        }
+        return Booklist;
+    }
+    static addBook(book) {
+        const Booklist = SaveData.getBooklist();
+        Booklist.push(book);
+        localStorage.setItem('Booklist', JSON.stringify(Booklist));
+    }
+    static removeBook(title) {
+        const Booklist = SaveData.getBooklist();
+        Booklist.forEach((book, index) => {
+            if (book.title === title) {
+                Booklist.splice(index, 1);
+            }
+        });
+        localStorage.setItem('Booklist', JSON.stringify(Booklist));
+    }
+}
 
 // EVENT LISTENERS
 
-document.addEventListener('DOMContentLoaded', Application.addToLibrary)
+// load list on page open
+document.addEventListener('DOMContentLoaded', Application.addToLibrary);
 
+// open modal (to add book)
 window.addEventListener('click', function (e) {
     if (e.target == popup) {
         popup.classList.toggle('open');
@@ -65,20 +95,42 @@ window.addEventListener('keyup', function (e) {
 
 addbtn.addEventListener('mouseup', function () {
     popup.classList.toggle('open');
+    document.querySelector(".title").focus();
 });
 
 closebtn.addEventListener('mouseup', function () {
     popup.classList.toggle('open');
 });
 
+document.querySelector('.library-container').addEventListener('click', (e) => {
+    Application.removeBook(e.target);
+});
+
+// form submit (add new book)
 form.addEventListener("submit", function (e) {
     e.preventDefault();
-    let title = form.elements['title'].value;
-    let author = form.elements['author'].value;
-    let pages = form.elements['pages'].value;
-    let status = form.elements['status'].value;
-    booklist.push(new Book(title, author, pages, status));
-    buildLibrary();
-    document.getElementById("form").reset();
-    popup.classList.toggle('open');
+    const title = form.elements['title'].value;
+    const author = form.elements['author'].value;
+    const pages = form.elements['pages'].value;
+    const status = form.elements['status'].value;
+    // Validation
+    if (title === '' || author === '' || pages === '') {
+        Application.showValidationAlert('Please fill in all fields.', 'error');
+    } else {
+        // Instantiate book and add it
+        const book = new Book(title, author, pages, status);
+        Application.addBook(book);
+        SaveData.addBook(book);
+        Application.showValidationAlert(`(${book.title} by ${book.author}) added to list.`, 'success');
+        document.getElementById("form").reset();
+        popup.classList.toggle('open');
+    }
 });
+
+const delbtn = document.querySelector('.delete-storage');
+delbtn.addEventListener('mouseup', clearAll);
+
+function clearAll() {
+    localStorage.clear();
+    window.location.reload();
+}

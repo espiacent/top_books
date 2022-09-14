@@ -18,12 +18,11 @@
     <header>
         <div class="header-menu">
             <h1>Books</h1>
+            <button class="book-add" id="book-add">Add to Library</button>
+            <button class="delete-storage">Delete</button>
         </div>
     </header>
     <main>
-        <div class="functionality">
-        <button class="book-add" id="book-add">Add to Library</button>
-    </div>
     <div class="library-container">
     </div>
         <div class="book-modal noselect" id="book-modal">
@@ -33,14 +32,13 @@
                 <hr>
                 <form class="form" id="form">
                     <label for="title">Title
-                        <input type="text" class="title" name="title" required="" maxlength="64" autocomplete="off">
+                        <input type="text" class="title" name="title" maxlength="64" autocomplete="off">
                     </label>
                     <label for="author">Author
-                        <input type="text" class="author" name="author" required="" maxlength="64" autocomplete="off">
+                        <input type="text" class="author" name="author"  maxlength="64" autocomplete="off">
                     </label>
                     <label for="pages">Pages
-                        <input type="number" class="pages" name="pages" required="" min="1" max="9999"
-                            autocomplete="off">
+                        <input type="number" class="pages" name="pages" min="1" max="9999" autocomplete="off">
                     </label>
                     <label for="status">Read status?
                         <select class="status" name="status">
@@ -50,12 +48,13 @@
                         </select>
                     </label>
                     <hr>
-                    <div class="submit-add"><a href="#"><button class="book-add" type="submit" form="form">Add Book</button>
+                    <div class="submit-add"><button class="book-add" type="submit" form="form">Add Book</button>
                 </form>
             </div>
     </main>
     <footer>
-
+        <div class="alert-container"><small>Footer</small>
+</div>
     </footer>
 </body>
 

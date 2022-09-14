@@ -1,16 +1,19 @@
 body {
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
     margin: 0;
+    background-color: gray;
 }
+
+main {
+    background-color: white;
+}
+
 
 .header-menu {
     background-color: gray;
     color: white;
-    border: 1px solid gray;
     margin-bottom: 10px;
-    text-align: center;
-}
-
-.functionality {
     text-align: center;
 }
 
@@ -45,7 +48,7 @@ body {
 }
 
 .modal-content {
-    margin: 10% auto;
+    margin: 12% auto;
     color: white;
     border: 2px solid black;
     padding: 20px;
@@ -127,5 +130,20 @@ button {
 .book-box {
     border: 1px solid red;
     height: 200px;
+    text-align: center;
+}
+
+.error {
+    background-color: red;
+}
+
+.success {
+    background-color: green;
+}
+
+footer {
+    background-color: gray;
+    color: white;
+    margin-bottom: 10px;
     text-align: center;
 }
