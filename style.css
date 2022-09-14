@@ -113,6 +113,10 @@ p {
     margin-bottom: 5px;
 }
 
+button {
+    margin-top: 20px;
+}
+
 .library-container {
     display: grid;
     gap: 10px;
@@ -122,5 +126,6 @@ p {
 
 .book-box {
     border: 1px solid red;
-    height: 180px;
+    height: 200px;
+    text-align: center;
 }
