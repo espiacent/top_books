@@ -32,19 +32,19 @@
                 <hr>
                 <form class="form" id="form">
                     <label for="title">Title
-                        <input type="text" class="title" name="title" maxlength="64" autocomplete="off">
+                        <input type="text" class="title" name="title" maxlength="64" value="" autocomplete="off">
                     </label>
                     <label for="author">Author
-                        <input type="text" class="author" name="author"  maxlength="64" autocomplete="off">
+                        <input type="text" class="author" name="author"  maxlength="64" value="" autocomplete="off">
                     </label>
                     <label for="pages">Pages
-                        <input type="number" class="pages" name="pages" min="1" max="9999" autocomplete="off">
+                        <input type="number" class="pages" name="pages" min="1" max="9999" value="" autocomplete="off">
                     </label>
                     <label for="status">Read status?
-                        <select class="status" name="status">
-                            <option value="already read">Already read</option>
-                            <option value="not yet read">Not yet read</option>
-                            <option value="currently reading">Currently reading</option>
+                        <select class="status" name="status" selected="">
+                            <option class="unread" value="unread">unread</option>
+                            <option class="read" value="read">read</option>
+                            <option class="reading" value="reading">reading</option>
                         </select>
                     </label>
                     <hr>

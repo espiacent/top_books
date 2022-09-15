@@ -117,7 +117,13 @@ p {
 }
 
 button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-book, .delete-book {
     margin-top: 20px;
+    margin-bottom: 12px;
 }
 
 .library-container {
@@ -129,7 +135,6 @@ button {
 
 .book-box {
     border: 1px solid red;
-    height: 200px;
     text-align: center;
 }
 
