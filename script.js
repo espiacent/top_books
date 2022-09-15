@@ -3,7 +3,7 @@ const addbtn = document.querySelector('.book-add');
 const closebtn = document.querySelector('.modal-close-btn');
 const popup = document.querySelector('.book-modal');
 window.edit = false;
-let counter = 1;
+let counter = 0;
 
 
 // BOOK CLASS
@@ -48,31 +48,36 @@ class Application {
             // get form fields and fill with current values
             const form = document.querySelector('form');
             const titleField = form.querySelector('.title');
-            titleField.value = `${e.parentElement.querySelector('.title').textContent}`
+            titleField.value = `${e.parentElement.querySelector('.title').textContent}`;
             const authorField = form.querySelector('.author');
-            authorField.value = `${e.parentElement.querySelector('.author').textContent}`
+            authorField.value = `${e.parentElement.querySelector('.author').textContent}`;
             const pagesField = form.querySelector('.pages');
-            pagesField.value = `${e.parentElement.querySelector('.pages').textContent}`
-            const readField = form.querySelector(`.${e.parentElement.querySelector('.read').textContent}`);
-            readField.setAttribute('selected', '');
+            pagesField.value = `${e.parentElement.querySelector('.pages').textContent}`;
+            const readField = form.querySelector('.status');
+            readField.value = `${e.parentElement.querySelector('.read').textContent}`;
+            // const readField = form.querySelector(`.${ e.parentElement.querySelector('.read').textContent } `);
+            // readField.setAttribute('selected', '');
             // on submit form, change changed values in box
             window.bookbox = e.parentElement.className;
-            console.log(e.parentElement.className);
             // on submit also close window and clear values
             window.edit = true;
+            const header = document.querySelector('.modal-header');
+            header.textContent = 'Edit Book';
+            const button = document.getElementById('modal-btn');
+            button.textContent = 'Save Changes';
             popup.classList.toggle('open');
         }
     }
     static updateBook(title, author, pages, status, bookbox) {
         const box = document.querySelector(`.${bookbox}`);
         box.innerHTML = `
-                <p class="title">${title}</p>
+                <p class="title">${title}</>
                 <p class="author">${author}</p>
                 <p class="pages">${pages}</p>
                 <p class="read">${status}</p>
                 <button class="edit-book">Edit</button>
                 <button class="delete-book">Delete</button>
-                `;
+            `;
     }
     static showValidationAlert(message, classname) {
         const alertbox = document.createElement('div');
@@ -119,14 +124,23 @@ document.addEventListener('DOMContentLoaded', Application.addToLibrary);
 // open and close modal (to add book)
 window.addEventListener('click', function (e) {
     if (e.target == popup) {
-        popup.classList.toggle('open');
+        const header = document.querySelector('.modal-header');
+        header.textContent = 'New Book';
+        const button = document.getElementById('modal-btn');
+        button.textContent = 'Add Book';
         document.getElementById("form").reset();
+        popup.classList.toggle('open');
     }
 });
 
 window.addEventListener('keyup', function (e) {
     if (e.key === 'Escape') {
-        popup.classList.toggle('open');
+        popup.classList.remove('open');
+        const header = document.querySelector('.modal-header');
+        header.textContent = 'New Book';
+        const button = document.getElementById('modal-btn');
+        button.textContent = 'Add Book';
+        document.getElementById("form").reset();
     }
 });
 
@@ -166,14 +180,19 @@ form.addEventListener("submit", function (e) {
             SaveData.addBook(book);
             Application.showValidationAlert(`(${book.title} by ${book.author}) added to list.`, 'success');
             document.getElementById("form").reset();
+
             popup.classList.toggle('open');
         } if (window.edit == true) {
             const bookbox = window.bookbox;
             Application.updateBook(title, author, pages, status, bookbox);
-            Application.showValidationAlert('Item updated.', 'success');
+            Application.showValidationAlert('Changes saved.', 'success');
             document.getElementById("form").reset();
             window.edit = false;
             popup.classList.toggle('open');
+            const header = document.querySelector('.modal-header');
+            header.textContent = 'New Book';
+            const button = document.getElementById('modal-btn');
+            button.textContent = 'Add Book';
         }
     }
 });
