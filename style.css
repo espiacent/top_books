@@ -1,34 +1,51 @@
+/* define colour variables
+
+text : #cbd600
+background : #53544e
+complementary 1 : #d60700
+complementary 2 : #0b00d6 */
+
 body {
     display: grid;
     grid-template-rows: 1fr 4fr 1fr;
     margin: 0;
-    background-color: gray;
+    background-color: #53544e;
 }
 
 main {
-    background-color: white;
+    background-color: #53544e;
 }
 
-
 .header-menu {
-    background-color: gray;
-    color: white;
+    background-color: #53544e;
+    color: #cbd600;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .book-add {
-    background-color: rgb(65, 65, 211);
-    color: white;
+    color: #cbd600;
     border: none;
     border-radius: 12px;
     width: 115px;
     height: 30px;
 }
 
-.book-add:hover {
-    background-color: rgb(42, 42, 117);
-    cursor: pointer;
+.delete-storage {
+    border: none;
+    border-radius: 12px;
+    width: 80px;
+    height: 30px;
+}
+
+.edit-book,
+.delete-book {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 12px;
+    width: 75px;
+    height: 30px;
 }
 
 .book-modal {
@@ -49,14 +66,14 @@ main {
 
 .modal-content {
     margin: 12% auto;
-    color: white;
+    color: #cbd600;
     border: 2px solid black;
     padding: 20px;
     font-size: 1.2rem;
     min-width: 200px;
     overflow: hidden;
     width: 15%;
-    background-color: gray;
+    background-color: #53544e;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -107,7 +124,7 @@ label {
 }
 
 hr {
-    color: white;
+    color: #cbd600;
     margin-bottom: 20px;
     margin-top: 0;
 }
@@ -119,12 +136,22 @@ p {
 button {
     margin-top: 10px;
     margin-bottom: 10px;
+    color: #cbd600;
+    background-color: #0b00d6;
+    font-weight: 700;
+    font-size: 0.8rem;
 }
 
-.edit-book, .delete-book {
-    margin-top: 20px;
-    margin-bottom: 12px;
+button:hover {
+    background-color: #3933bc;
+    cursor: pointer;
+    text-decoration: none;
 }
+
+small {
+    font-size: 1rem;
+}
+
 
 .library-container {
     display: grid;
@@ -133,22 +160,39 @@ button {
     margin: 24px;
 }
 
-.book-box {
-    border: 1px solid red;
+[class^="book-box-"] {
     text-align: center;
+    background: gray;
+    color: #cbd600;
+    font-size: 1.2rem;
+    border: 4px solid #0b00d6;
 }
 
 .error {
-    background-color: red;
+    background-color: rgb(174, 21, 21);
+    width: 200px;
+    padding: 12px;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: 2px solid #0b00d6;
 }
 
 .success {
-    background-color: green;
+    background-color: rgb(23, 97, 23);
+    width: 200px;
+    padding: 12px;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: 2px solid #0b00d6;
 }
 
 footer {
-    background-color: gray;
-    color: white;
+    background-color: #53544e;
+    color: #cbd600;
     margin-bottom: 10px;
     text-align: center;
 }

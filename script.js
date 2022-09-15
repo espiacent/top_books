@@ -71,7 +71,7 @@ class Application {
     static updateBook(title, author, pages, status, bookbox) {
         const box = document.querySelector(`.${bookbox}`);
         box.innerHTML = `
-                <p class="title">${title}</>
+                <p class="title">${title}</p>
                 <p class="author">${author}</p>
                 <p class="pages">${pages}</p>
                 <p class="read">${status}</p>
@@ -86,7 +86,7 @@ class Application {
         const container = document.querySelector('.alert-container');
         const small = document.querySelector('small');
         container.insertBefore(alertbox, small);
-        setTimeout(() => document.querySelector('.alertbox').remove(), 1800);
+        setTimeout(() => document.querySelector('.alertbox').remove(), 2000);
     }
 };
 
@@ -151,8 +151,12 @@ addbtn.addEventListener('mouseup', function () {
 
 
 closebtn.addEventListener('mouseup', function () {
-    popup.classList.toggle('open');
+    const header = document.querySelector('.modal-header');
+    header.textContent = 'New Book';
+    const button = document.getElementById('modal-btn');
+    button.textContent = 'Add Book';
     document.getElementById("form").reset();
+    popup.classList.toggle('open');
 });
 
 // edit and delete button in book box
@@ -178,7 +182,7 @@ form.addEventListener("submit", function (e) {
             const book = new Book(title, author, pages, status);
             Application.addBook(book);
             SaveData.addBook(book);
-            Application.showValidationAlert(`(${book.title} by ${book.author}) added to list.`, 'success');
+            Application.showValidationAlert(`__${book.title} by ${book.author}__ added to list.`, 'success');
             document.getElementById("form").reset();
 
             popup.classList.toggle('open');
