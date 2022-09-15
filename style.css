@@ -19,7 +19,6 @@ main {
 .header-menu {
     background-color: #53544e;
     color: #cbd600;
-    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -40,12 +39,21 @@ main {
 
 .edit-book,
 .delete-book {
-    margin-top: 20px;
-    margin-bottom: 12px;
+    margin: 12px;
     border: none;
     border-radius: 12px;
     width: 75px;
     height: 30px;
+    position: absolute;
+    bottom: 0;
+}
+
+.edit-book {
+left: 10px;
+}
+
+.delete-book {
+    right: 12px;
 }
 
 .book-modal {
@@ -65,7 +73,7 @@ main {
 }
 
 .modal-content {
-    margin: 12% auto;
+    margin: 9% auto;
     color: #cbd600;
     border: 2px solid black;
     padding: 20px;
@@ -133,6 +141,10 @@ p {
     margin-bottom: 5px;
 }
 
+h1 {
+    margin-bottom: 10px;
+}
+
 button {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -161,11 +173,45 @@ small {
 }
 
 [class^="book-box-"] {
+    position: relative;
+    min-height: 240px;
+    min-width: 280px;
     text-align: center;
     background: gray;
     color: #cbd600;
     font-size: 1.2rem;
+    font-weight: 600;
+    border: 6px solid #0b00d6;
+}
+
+.boxbox {
+    padding: 10px;
+    min-height: 240px;
+    min-width: 280px;
+    background: gray;
+    color: #cbd600;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 6px solid #0b00d6;
+    position: relative;
+    overflow: scroll;
+}
+
+.divider {
+    height: 80px;
+}
+
+td, table {
+    margin: auto;
+    margin-top: 10px;
+    text-align: left;
     border: 4px solid #0b00d6;
+    border-collapse: collapse;
+}
+
+td {
+    line-height: 150%;
+    padding: 8px;
 }
 
 .error {
