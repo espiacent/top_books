@@ -190,7 +190,7 @@ small {
 .library-container {
     display: grid;
     gap: 12px;
-    grid-template-columns: repeat(4, 0.8fr);
+    grid-template-columns: repeat(4, 0.8fr)
     margin: 24px;
 }
 
