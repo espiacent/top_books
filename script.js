@@ -40,7 +40,7 @@ class Application {
     static removeBook(e) {
         if (e.classList.contains('delete-book')) {
             e.parentElement.remove();
-            Application.showValidationAlert('Item removed from list.', 'success');
+            Application.showValidationAlert('REMOVED FROM LIBRARY', 'success');
         }
     }
     static editBook(e) {
@@ -175,21 +175,21 @@ form.addEventListener("submit", function (e) {
     const status = form.elements['status'].value;
     // Validation
     if (title === '' || author === '' || pages === '') {
-        Application.showValidationAlert('Please fill in all fields.', 'error');
+        Application.showValidationAlert('PLEASE FILL IN ALL FIELDS', 'error');
     } else {
         if (window.edit == false) {
             // Instantiate book and add it
             const book = new Book(title, author, pages, status);
             Application.addBook(book);
             SaveData.addBook(book);
-            Application.showValidationAlert(`__${book.title} by ${book.author}__ added to list.`, 'success');
+            Application.showValidationAlert('ADDED TO LIBRARY', 'success');
             document.getElementById("form").reset();
 
             popup.classList.toggle('open');
         } if (window.edit == true) {
             const bookbox = window.bookbox;
             Application.updateBook(title, author, pages, status, bookbox);
-            Application.showValidationAlert('Changes saved.', 'success');
+            Application.showValidationAlert('CHANGES SAVED', 'success');
             document.getElementById("form").reset();
             window.edit = false;
             popup.classList.toggle('open');
