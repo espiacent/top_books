@@ -106,7 +106,7 @@ class Application {
         alertbox.appendChild(document.createTextNode(message));
         const container = document.querySelector('.alert-container');
         const small = document.querySelector('small');
-        container.insertBefore(alertbox, small);
+        container.after(alertbox, small);
         setTimeout(() => document.querySelector('.alertbox').remove(), 2000);
     }
 };
