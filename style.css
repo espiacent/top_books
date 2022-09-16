@@ -189,15 +189,15 @@ small {
 
 .library-container {
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    grid-template-columns: repeat(4, 0.8fr);
     margin: 24px;
 }
 
 [class^="book-box-"] {
     position: relative;
     padding: 10px;
-    margin: 9% auto;
+    margin: 11% auto;
     font-size: 1.2rem;
     min-height: 240px;
     min-width: 280px;
