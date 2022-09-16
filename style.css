@@ -1,6 +1,6 @@
 /* define colour variables
 
-text : #cbd600
+text : #F4FF1F
 background : #53544e
 complementary 1 : #d60700
 complementary 2 : #0b00d6 */
@@ -10,6 +10,7 @@ body {
     grid-template-rows: 1fr 4fr 1fr;
     margin: 0;
     background-color: #53544e;
+    box-sizing: border-box;
 }
 
 main {
@@ -18,12 +19,12 @@ main {
 
 .header-menu {
     background-color: #53544e;
-    color: #cbd600;
+    color: #F4FF1F;
     text-align: center;
 }
 
 .book-add {
-    color: #cbd600;
+    color: #F4FF1F;
     border-radius: 12px;
     width: 115px;
     height: 30px;
@@ -73,7 +74,7 @@ main {
 
 .modal-content {
     margin: 9% auto;
-    color: #cbd600;
+    color: #F4FF1F;
     border: 2px solid black;
     padding: 20px;
     font-size: 1.2rem;
@@ -125,7 +126,7 @@ input {
 }
 
 input:focus {
-        outline: 1px solid black;
+    outline: 1px solid black;
 }
 
 select {
@@ -165,7 +166,7 @@ h1 {
 button {
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #cbd600;
+    color: #F4FF1F;
     box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5);
     background-color: rgb(9, 9, 9);
     border: none;
@@ -201,23 +202,8 @@ small {
     min-height: 240px;
     min-width: 280px;
     overflow: scroll;
-    color: #cbd600;
+    color: #F4FF1F;
     border-radius: 12px;
-    border: 2px solid black;
-    background-color: #53544e;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
-}
-
-.boxbox {
-    padding: 10px;
-    min-height: 240px;
-    min-width: 280px;
-    font-size: 1.2rem;
-    position: relative;
-    overflow: scroll;
-    border-radius: 12px;
-    margin: 9% auto;
-    color: #cbd600;
     border: 2px solid black;
     background-color: #53544e;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
@@ -227,27 +213,38 @@ small {
     height: 80px;
 }
 
-td, table {
+td,
+table {
     margin: auto;
     margin-top: 10px;
     text-align: left;
     border-collapse: separate;
-    border-spacing: 12px;
+    border-spacing: 0px 12px;
+}
 
+table {
+    width: 258px;
+    height: 280px;
 }
 
 td {
     line-height: 150%;
     padding: 8px;
+    background-color: #696963;
+    height: 48px;
 }
 
-.displayed-values {
+[class^="displayed-values-"] {
     font-size: 1rem;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .left-field {
     border-right: 2px solid black;
     padding-left: 18px;
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 tr {
@@ -258,7 +255,7 @@ tr {
 .error {
     color: rgb(184, 0, 0);
     border: 3px solid rgb(184, 0, 0);
-    background-color: #cbd600;
+    background-color: #F4FF1F;
     width: 300px;
     padding: 18px;
     margin: auto;
@@ -277,13 +274,13 @@ tr {
     font-size: 1.2rem;
     font-weight: 700;
     border: 3px solid rgb(2, 66, 2);
-    background-color: #cbd600;
+    background-color: #F4FF1F;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 footer {
     background-color: #53544e;
-    color: #cbd600;
+    color: #F4FF1F;
     margin-bottom: 10px;
     text-align: center;
 }

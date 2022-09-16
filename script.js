@@ -3,16 +3,17 @@ const addbtn = document.querySelector('.book-add');
 const closebtn = document.querySelector('.modal-close-btn');
 const popup = document.querySelector('.book-modal');
 window.edit = false;
+window.bookselection = '';
 let counter = 0;
 
 
 // BOOK CLASS
 class Book {
-    constructor(title, author, pages, read) {
+    constructor(title, author, pages, status) {
         this.title = title
         this.author = author
         this.pages = pages
-        this.read = read
+        this.status = status
     }
 }
 // APP CLASS
@@ -27,13 +28,24 @@ class Application {
         const box = document.createElement('div');
         box.className = `book-box-${counter}`;
         box.innerHTML = `
-                <p class="title">${book.title}</p>
-                <p class="author">${book.author}</p>
-                <p class="pages">${book.pages}</p>
-                <p class="read">${book.read}</p>
-                <button class="edit-book">Edit</button>
-                <button class="delete-book">Delete</button>
-                `;
+            <table><tr>
+            <td class="left-field">Title:</td>
+            <td class="displayed-values-title">${book.title}</td>
+            </tr><tr>
+            <td class="left-field">Author:</td>
+            <td class="displayed-values-author">${book.author}</td>
+            </tr><tr>
+            <td class="left-field">Pages:</td>
+            <td class="displayed-values-pages">${book.pages}</td>
+            </tr><tr>
+            <td class="left-field">status?</td>
+            <td class="displayed-values-status">${book.status}</td>
+            </tr></table>
+            <div class="divider"></div>
+            <button class="edit-book">Edit</button>
+            <button class="delete-book">Delete</button>
+            </div>
+        `;
         library.appendChild(box);
         counter++
     }
@@ -48,15 +60,13 @@ class Application {
             // get form fields and fill with current values
             const form = document.querySelector('form');
             const titleField = form.querySelector('.title');
-            titleField.value = `${e.parentElement.querySelector('.title').textContent}`;
+            titleField.value = `${e.parentElement.querySelector('.displayed-values-title').textContent}`;
             const authorField = form.querySelector('.author');
-            authorField.value = `${e.parentElement.querySelector('.author').textContent}`;
+            authorField.value = `${e.parentElement.querySelector('.displayed-values-author').textContent}`;
             const pagesField = form.querySelector('.pages');
-            pagesField.value = `${e.parentElement.querySelector('.pages').textContent}`;
-            const readField = form.querySelector('.status');
-            readField.value = `${e.parentElement.querySelector('.read').textContent}`;
-            // const readField = form.querySelector(`.${ e.parentElement.querySelector('.read').textContent } `);
-            // readField.setAttribute('selected', '');
+            pagesField.value = `${e.parentElement.querySelector('.displayed-values-pages').textContent}`;
+            const statusField = form.querySelector('.status');
+            statusField.value = `${e.parentElement.querySelector('.displayed-values-status').textContent}`;
             // on submit form, change changed values in box
             window.bookbox = e.parentElement.className;
             // on submit also close window and clear values
@@ -71,13 +81,24 @@ class Application {
     static updateBook(title, author, pages, status, bookbox) {
         const box = document.querySelector(`.${bookbox}`);
         box.innerHTML = `
-                <p class="title">${title}</p>
-                <p class="author">${author}</p>
-                <p class="pages">${pages}</p>
-                <p class="read">${status}</p>
-                <button class="edit-book">Edit</button>
-                <button class="delete-book">Delete</button>
-            `;
+            <table><tr>
+            <td class="left-field">Title:</td>
+            <td class="displayed-values-title">${title}</td>
+            </tr><tr>
+            <td class="left-field">Author:</td>
+            <td class="displayed-values-author">${author}</td>
+            </tr><tr>
+            <td class="left-field">Pages:</td>
+            <td class="displayed-values-pages">${pages}</td>
+            </tr><tr>
+            <td class="left-field">status?</td>
+            <td class="displayed-values-status">${status}</td>
+            </tr></table>
+            <div class="divider"></div>
+            <button class="edit-book">Edit</button>
+            <button class="delete-book">Delete</button>
+            </div>
+        `;
     }
     static showValidationAlert(message, classname) {
         const alertbox = document.createElement('div');
@@ -163,7 +184,8 @@ closebtn.addEventListener('mouseup', function () {
 document.querySelector('.library-container').addEventListener('click', (e) => {
     Application.editBook(e.target);
     Application.removeBook(e.target);
-    SaveData.removeBook(e.target.parentElement.querySelector('.title').textContent);
+    window.bookselection = e.target.parentElement.querySelector('.displayed-values-title').textContent;
+    SaveData.removeBook(e.target.parentElement.querySelector('.displayed-values-title').textContent);
 });
 
 // form submit (add new book)
@@ -190,6 +212,9 @@ form.addEventListener("submit", function (e) {
             const bookbox = window.bookbox;
             Application.updateBook(title, author, pages, status, bookbox);
             Application.showValidationAlert('CHANGES SAVED', 'success');
+            SaveData.removeBook(window.bookselection);
+            const book = new Book(title, author, pages, status);
+            SaveData.addBook(book);
             document.getElementById("form").reset();
             window.edit = false;
             popup.classList.toggle('open');
