@@ -9,11 +9,20 @@ body {
     background-color: #53544e;
     box-sizing: border-box;
     height: 100%;
+    margin: 0;
 }
 
 main {
     background-color: #53544e;
     overflow: scroll;
+}
+
+header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .header-menu {
@@ -250,19 +259,13 @@ tr {
     border-radius: 10px;
 }
 
-.alertbox {
-    position: absolute;
-    bottom: 20px;
-    left: 37%;
-}
-
 .error {
     color: rgb(184, 0, 0);
     border: 3px solid rgb(184, 0, 0);
     background-color: #F4FF1F;
     width: 300px;
     padding: 18px;
-    margin: auto;
+    margin: 100px auto;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
@@ -274,7 +277,7 @@ tr {
     color: rgb(2, 66, 2);
     width: 300px;
     padding: 18px;
-    margin: auto;
+    margin: 100px auto;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
