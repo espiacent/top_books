@@ -15,6 +15,7 @@ body {
 main {
     background-color: #53544e;
     overflow: scroll;
+    height: 100%;
 }
 
 header {
@@ -259,13 +260,16 @@ tr {
     border-radius: 10px;
 }
 
+.alertbox {
+    margin: 20px auto;
+}
+
 .error {
     color: rgb(184, 0, 0);
     border: 3px solid rgb(184, 0, 0);
     background-color: #F4FF1F;
     width: 300px;
     padding: 18px;
-    margin: 100px auto;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
@@ -277,7 +281,6 @@ tr {
     color: rgb(2, 66, 2);
     width: 300px;
     padding: 18px;
-    margin: 100px auto;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
@@ -287,10 +290,11 @@ tr {
 }
 
 footer {
-    background-color: #53544e;
+    background-color: rgb(0, 0, 0, 0);
     color: #F4FF1F;
     margin-bottom: 10px;
     text-align: center;
-    position: sticky;
+    position: fixed;
+    width: 100%;
     bottom: 0;
 }
