@@ -1,3 +1,4 @@
+'use strict';
 // GET SOME ELEMENT CONSTANTS
 const addbtn = document.querySelector('.book-add');
 const closebtn = document.querySelector('.modal-close-btn');
@@ -149,6 +150,7 @@ window.addEventListener('click', function (e) {
         header.textContent = 'New Book';
         const button = document.getElementById('modal-btn');
         button.textContent = 'Add Book';
+        window.edit = false;
         document.getElementById("form").reset();
         popup.classList.toggle('open');
     }
@@ -161,6 +163,7 @@ window.addEventListener('keyup', function (e) {
         header.textContent = 'New Book';
         const button = document.getElementById('modal-btn');
         button.textContent = 'Add Book';
+        window.edit = false;
         document.getElementById("form").reset();
     }
 });
